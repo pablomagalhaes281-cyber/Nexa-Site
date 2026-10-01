@@ -1,149 +1,529 @@
-﻿import Image from 'next/image';
-import { AutomationFlow } from '@/components/AutomationFlow';
-import { CursorGlow } from '@/components/CursorGlow';
-import { Header } from '@/components/Header';
+﻿'use client';
+
+import Image from 'next/image';
+import { useState } from 'react';
 import { Reveal } from '@/components/Reveal';
-import { Services } from '@/components/Services';
-import { SolarSystem } from '@/components/SolarSystem';
-import { SpaceBackground } from '@/components/SpaceBackground';
-import { TechnologyNetwork } from '@/components/TechnologyNetwork';
+
+const WHATSAPP_URL =
+  'https://wa.me/553592602600?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Nexa%20Flow%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20solu%C3%A7%C3%B5es.';
+
+const services = [
+  {
+    number: '01',
+    title: 'Automação',
+    description:
+      'Automatizamos processos repetitivos para sua empresa ganhar velocidade, organização e tempo.',
+    tag: 'PROCESSOS',
+  },
+  {
+    number: '02',
+    title: 'Inteligência Artificial',
+    description:
+      'Integramos inteligência artificial ao atendimento e às operações do seu negócio.',
+    tag: 'IA',
+  },
+  {
+    number: '03',
+    title: 'Sites & Landing Pages',
+    description:
+      'Criamos experiências digitais rápidas, profissionais e pensadas para transformar visitas em oportunidades.',
+    tag: 'WEB',
+  },
+  {
+    number: '04',
+    title: 'WhatsApp & Bots',
+    description:
+      'Atendimento automatizado para responder clientes, organizar contatos e gerar novas oportunidades.',
+    tag: 'BOTS',
+  },
+];
 
 const benefits = [
   { value: '24/7', label: 'Atendimento automatizado' },
   { value: '+Agilidade', label: 'Processos mais rápidos' },
   { value: '+Tempo', label: 'Menos tarefas repetitivas' },
-  { value: 'Escalável', label: 'Tecnologia que acompanha o crescimento' },
+  { value: 'Escalável', label: 'Tecnologia que cresce com você' },
 ];
 
-export default function Home() {
+const processSteps = [
+  {
+    number: '01',
+    title: 'Entendemos',
+    description:
+      'Conhecemos sua empresa, sua rotina e os processos que podem ser melhorados.',
+  },
+  {
+    number: '02',
+    title: 'Planejamos',
+    description:
+      'Desenhamos uma solução objetiva e adequada às necessidades do negócio.',
+  },
+  {
+    number: '03',
+    title: 'Desenvolvemos',
+    description:
+      'Transformamos o planejamento em uma solução digital funcional.',
+  },
+  {
+    number: '04',
+    title: 'Evoluímos',
+    description:
+      'Acompanhamos o projeto e buscamos novas oportunidades de automação.',
+  },
+];
+
+function InstagramIcon() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#030306] text-white selection:bg-violet-500/30">
-      <CursorGlow />
-      <SpaceBackground />
-      <Header />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
-      <section id="inicio" className="relative isolate flex min-h-screen items-center px-5 pb-24 pt-32 sm:px-6 lg:px-8">
-        <div className="pointer-events-none absolute left-[8%] top-[14%] h-[280px] w-[280px] rounded-full bg-[#55B8FF]/10 blur-[120px]" />
-        <div className="pointer-events-none absolute right-[6%] top-[18%] h-[360px] w-[360px] rounded-full bg-[#A855F7]/12 blur-[140px]" />
+export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <Reveal className="max-w-[620px]">
-            <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.02] px-3 py-1.5 text-[9px] font-medium tracking-[0.2em] text-zinc-300/80">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400/50" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
-              </span>
-              AUTOMAÇÃO • IA • DESENVOLVIMENTO
+  return (
+    <main className="min-h-screen overflow-x-hidden bg-black text-white">
+      {/* HEADER */}
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-[#292d30] bg-black/85 backdrop-blur-xl">
+        <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-5 sm:px-6">
+          <a href="#inicio" className="flex items-center gap-3">
+            <Image
+              src="/logo-nexa.png"
+              alt="Nexa Flow"
+              width={38}
+              height={38}
+              priority
+              className="h-[38px] w-[38px] object-contain"
+            />
+
+            <div>
+              <p className="text-[11px] font-semibold tracking-[0.18em]">
+                NEXA FLOW
+              </p>
+
+              <p className="mt-1 font-mono text-[8px] tracking-[0.22em] text-[#6e727a]">
+                IA
+              </p>
             </div>
+          </a>
 
-            <h1
-              className="max-w-[620px] text-[clamp(2.5rem,4vw,4rem)] leading-[1.02] tracking-[-0.03em] text-[#F5F7FA]"
-              style={{ fontFamily: 'var(--font-manrope)', fontWeight: 600 }}
+          <nav className="hidden items-center gap-7 text-[13px] text-[#a1a4a5] md:flex">
+            <a href="#inicio" className="nav-link hover:text-white">
+              Início
+            </a>
+            <a href="#solucoes" className="nav-link hover:text-white">
+              Soluções
+            </a>
+            <a href="#tecnologia" className="nav-link hover:text-white">
+              Tecnologia
+            </a>
+            <a href="#processo" className="nav-link hover:text-white">
+              Como funciona
+            </a>
+            <a href="#sobre" className="nav-link hover:text-white">
+              Sobre
+            </a>
+          </nav>
+
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href="https://www.instagram.com/nexa_flowia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram da Nexa Flow"
+              className="magnetic-button flex h-9 w-9 items-center justify-center rounded-[6px] border border-[#292d30] text-[#a1a4a5] hover:border-[#555] hover:text-white"
             >
-              <span className="block">Automação inteligente</span>
-              <span className="mt-1 block text-[#F5F7FA]">
-                para o seu <span className="bg-gradient-to-r from-[#55B7FF] via-[#7478FF] to-[#B34DFF] bg-clip-text text-transparent">negócio</span>
-              </span>
-            </h1>
+              <InstagramIcon />
+            </a>
 
-            <div className="mt-9 flex flex-wrap gap-4">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="magnetic-button rounded-[6px] border border-[#292d30] px-4 py-2 text-[13px] hover:border-[#777]"
+            >
+              Falar conosco
+            </a>
+          </div>
+
+          <button
+            type="button"
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex h-10 w-10 items-center justify-center rounded-[6px] border border-[#292d30] md:hidden"
+          >
+            <span className="flex w-4 flex-col gap-1.5">
+              <span
+                className={`h-px w-full bg-white transition ${
+                  menuOpen ? 'translate-y-[7px] rotate-45' : ''
+                }`}
+              />
+              <span
+                className={`h-px w-full bg-white transition ${
+                  menuOpen ? 'opacity-0' : ''
+                }`}
+              />
+              <span
+                className={`h-px w-full bg-white transition ${
+                  menuOpen ? '-translate-y-[7px] -rotate-45' : ''
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+
+        {menuOpen && (
+          <div className="border-t border-[#292d30] bg-black px-5 py-5 md:hidden">
+            <nav className="mx-auto flex max-w-[1200px] flex-col text-sm text-[#a1a4a5]">
+              <a
+                href="#inicio"
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-[#292d30] py-3"
+              >
+                Início
+              </a>
+
               <a
                 href="#solucoes"
-                className="magnetic-button group rounded-full bg-white px-5 py-2.75 text-sm font-semibold text-[#050507] shadow-[0_16px_40px_rgba(167,139,250,0.20)] transition hover:shadow-[0_20px_50px_rgba(167,139,250,0.28)]"
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-[#292d30] py-3"
               >
-                Conheça nossas soluções
-                <span className="ml-2 inline-block transition duration-300 group-hover:translate-x-1">→</span>
+                Soluções
               </a>
 
               <a
-                href="#contato"
-                className="magnetic-button rounded-full border border-white/15 bg-white/[0.02] px-5 py-2.75 text-sm font-medium text-zinc-100 transition hover:border-violet-400/40 hover:bg-white/[0.045]"
+                href="#tecnologia"
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-[#292d30] py-3"
               >
-                Falar com especialista
+                Tecnologia
+              </a>
+
+              <a
+                href="#processo"
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-[#292d30] py-3"
+              >
+                Como funciona
+              </a>
+
+              <a
+                href="#sobre"
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-[#292d30] py-3"
+              >
+                Sobre
+              </a>
+
+              <a
+                href="https://www.instagram.com/nexa_flowia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 border-b border-[#292d30] py-3"
+              >
+                <InstagramIcon />
+                @nexa_flowia
+              </a>
+
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 rounded-[6px] border border-[#292d30] px-4 py-3 text-center text-white"
+              >
+                Falar conosco
+              </a>
+            </nav>
+          </div>
+        )}
+      </header>
+
+      {/* HERO */}
+      <section
+        id="inicio"
+        className="relative flex min-h-screen items-center overflow-hidden border-b border-[#292d30] px-5 pb-20 pt-32 sm:px-6"
+      >
+        <div className="animated-line absolute inset-x-0 top-0 h-px" />
+
+        <div className="mx-auto grid w-full max-w-[1200px] items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <div className="hero-fade mb-8 inline-flex items-center gap-3 rounded-full border border-[#292d30] px-3 py-1.5 font-mono text-[11px] text-[#a1a4a5]">
+              <span className="status-dot h-1.5 w-1.5 rounded-full bg-[#3ad389]" />
+              NEXA SYSTEM ONLINE
+            </div>
+
+            <h1 className="hero-fade hero-fade-delay-1 max-w-[760px] text-[clamp(3.3rem,7vw,6rem)] font-normal leading-[0.96] tracking-[-0.04em]">
+              Automação
+              <br />
+              inteligente para
+              <br />
+              o seu negócio.
+            </h1>
+
+            <p className="hero-fade hero-fade-delay-2 mt-8 max-w-[560px] text-[16px] leading-7 text-[#a1a4a5] sm:text-[18px]">
+              Criamos soluções digitais para empresas que querem automatizar
+              processos, melhorar o atendimento e crescer usando tecnologia.
+            </p>
+
+            <div className="hero-fade hero-fade-delay-3 mt-10 flex flex-wrap gap-3">
+              <a
+                href="#solucoes"
+                className="magnetic-button rounded-[6px] border border-[#f0f0f0] px-5 py-3 text-sm hover:bg-white hover:text-black"
+              >
+                Conheça nossas soluções
+              </a>
+
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="magnetic-button rounded-[6px] border border-[#292d30] px-5 py-3 text-sm hover:border-[#777]"
+              >
+                Falar com especialista →
               </a>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal className="relative flex justify-center lg:justify-end">
-            <SolarSystem />
-          </Reveal>
+          {/* OBJETO ANIMADO */}
+          <div className="nexa-object relative hidden min-h-[500px] items-center justify-center lg:flex">
+            <div className="nexa-object-ring-one absolute h-[340px] w-[340px] rounded-[42px] border border-[#292d30]" />
+
+            <div className="nexa-object-ring-two absolute h-[255px] w-[255px] rounded-[12px] border border-[#292d30]" />
+
+            <div className="absolute h-[410px] w-px bg-gradient-to-b from-transparent via-[#292d30] to-transparent" />
+
+            <div className="absolute h-px w-[410px] bg-gradient-to-r from-transparent via-[#292d30] to-transparent" />
+
+            <div className="nexa-object-core relative flex h-[180px] w-[180px] rotate-[12deg] items-center justify-center rounded-[24px] border border-[#464a4d] bg-black">
+              <div className="absolute inset-5 rounded-[16px] border border-[#292d30]" />
+
+              <Image
+                src="/logo-nexa.png"
+                alt="Nexa Flow"
+                width={90}
+                height={90}
+                className="relative z-10 h-[90px] w-[90px] object-contain opacity-90"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="solucoes" className="border-t border-white/10 px-5 py-28 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <Reveal className="grid gap-8 lg:grid-cols-2">
-            <div>
-              <p className="mb-5 text-[11px] font-semibold tracking-[0.26em] text-violet-300">NOSSAS SOLUÇÕES</p>
-              <h2 className="max-w-xl text-[2.25rem] font-semibold tracking-[-0.06em] text-white sm:text-[3rem]">
-                Soluções que trabalham
-                <span className="block text-zinc-500">por você.</span>
-              </h2>
-            </div>
+      {/* BENEFÍCIOS */}
+      <section className="border-b border-[#292d30] px-5 sm:px-6">
+        <div className="mx-auto grid max-w-[1200px] sm:grid-cols-2 lg:grid-cols-4">
+          {benefits.map((item, index) => (
+            <Reveal
+              key={item.label}
+              className={`border-b border-[#292d30] px-6 py-8 sm:border-b-0 ${
+                index !== benefits.length - 1
+                  ? 'lg:border-r lg:border-[#292d30]'
+                  : ''
+              }`}
+            >
+              <p className="font-mono text-[12px] text-[#9281f7]">
+                {item.value}
+              </p>
 
-            <div className="flex items-end lg:justify-end">
-              <p className="max-w-lg text-base leading-8 text-zinc-400">
-                Estruturamos ferramentas que conectam comunicação, automação e tecnologia para transformar
-                sua operação em um sistema mais eficiente e preparado para crescer.
+              <p className="mt-2 text-sm text-[#a1a4a5]">{item.label}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* SOLUÇÕES */}
+      <section
+        id="solucoes"
+        className="border-b border-[#292d30] px-5 py-28 sm:px-6 lg:py-36"
+      >
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal>
+            <div className="mb-16 grid gap-8 lg:grid-cols-2">
+              <div>
+                <p className="mb-5 font-mono text-[11px] tracking-[0.12em] text-[#9281f7]">
+                  01 / SOLUÇÕES
+                </p>
+
+                <h2 className="text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.05em]">
+                  Tecnologia que
+                  <br />
+                  trabalha por você.
+                </h2>
+              </div>
+
+              <div className="flex items-end">
+                <p className="max-w-[480px] text-base leading-7 text-[#a1a4a5]">
+                  Soluções pensadas para eliminar tarefas repetitivas, melhorar
+                  a experiência dos seus clientes e criar uma operação mais
+                  eficiente.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {services.map((service, index) => (
+              <Reveal
+                key={service.number}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <article className="interactive-card group h-full rounded-[16px] border border-[#292d30] bg-black p-7 sm:p-8">
+                  <div className="relative z-10 mb-16 flex items-start justify-between">
+                    <span className="font-mono text-[11px] text-[#6e727a]">
+                      {service.number}
+                    </span>
+
+                    <span className="rounded-[6px] border border-[#292d30] px-2 py-1 font-mono text-[9px] tracking-[0.12em] text-[#9281f7]">
+                      {service.tag}
+                    </span>
+                  </div>
+
+                  <div className="relative z-10">
+                    <h3 className="text-2xl tracking-[-0.03em]">
+                      {service.title}
+                    </h3>
+
+                    <p className="mt-4 max-w-[460px] text-sm leading-6 text-[#a1a4a5]">
+                      {service.description}
+                    </p>
+
+                    <div className="mt-8 border-t border-[#292d30] pt-5">
+                      <span className="inline-block text-sm transition duration-200 group-hover:translate-x-1">
+                        Saiba mais →
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TECNOLOGIA */}
+      <section
+        id="tecnologia"
+        className="border-b border-[#292d30] px-5 py-28 sm:px-6 lg:py-36"
+      >
+        <div className="mx-auto grid max-w-[1200px] gap-16 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <div>
+              <p className="mb-5 font-mono text-[11px] tracking-[0.12em] text-[#9281f7]">
+                02 / TECNOLOGIA
+              </p>
+
+              <h2 className="text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.05em]">
+                Menos tarefas.
+                <br />
+                Mais crescimento.
+              </h2>
+
+              <p className="mt-7 max-w-[500px] text-base leading-7 text-[#a1a4a5]">
+                Conectamos ferramentas, atendimento e inteligência artificial
+                para construir processos que funcionam mesmo quando você não
+                está olhando.
               </p>
             </div>
           </Reveal>
 
           <Reveal>
-            <Services />
+            <div className="interactive-card overflow-hidden rounded-[16px] border border-[#292d30] bg-black">
+              <div className="flex h-12 items-center gap-2 border-b border-[#292d30] px-4">
+                <span className="h-2 w-2 rounded-full bg-[#464a4d]" />
+                <span className="h-2 w-2 rounded-full bg-[#464a4d]" />
+                <span className="h-2 w-2 rounded-full bg-[#464a4d]" />
+
+                <span className="ml-3 font-mono text-[10px] text-[#6e727a]">
+                  nexa-flow / automation
+                </span>
+              </div>
+
+              <div className="relative z-10 space-y-5 p-6 font-mono text-[12px] sm:p-8 sm:text-[13px]">
+                <p className="terminal-cursor text-[#6e727a]">
+                  {'>'} iniciando automação
+                </p>
+
+                <p>
+                  <span className="text-[#a1a4a5]">cliente:</span>{' '}
+                  <span className="text-[#9281f7]">novo_contato</span>
+                </p>
+
+                <p>
+                  <span className="text-[#a1a4a5]">canal:</span>{' '}
+                  <span>whatsapp</span>
+                </p>
+
+                <p>
+                  <span className="text-[#a1a4a5]">inteligência:</span>{' '}
+                  <span>atendimento_automatico</span>
+                </p>
+
+                <p>
+                  <span className="text-[#a1a4a5]">status:</span>{' '}
+                  <span className="inline-flex items-center gap-2 text-[#3ad389]">
+                    <span className="status-dot h-1.5 w-1.5 rounded-full bg-[#3ad389]" />
+                    conectado
+                  </span>
+                </p>
+
+                <div className="border-t border-[#292d30] pt-5 text-[#6e727a]">
+                  Nexa Flow System — operação concluída.
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
 
-      <section id="processo" className="px-5 py-28 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-[32px] border border-white/10 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent p-7 sm:p-10 lg:p-14">
+      {/* PROCESSO */}
+      <section
+        id="processo"
+        className="border-b border-[#292d30] px-5 py-28 sm:px-6 lg:py-36"
+      >
+        <div className="mx-auto max-w-[1200px]">
           <Reveal>
-            <p className="text-[11px] font-semibold tracking-[0.28em] text-blue-300">AUTOMAÇÃO NA PRÁTICA</p>
-            <h2 className="mt-5 max-w-3xl text-[2.2rem] font-semibold tracking-[-0.06em] text-white sm:text-[3rem]">
-              Menos tarefas.
-              <span className="block text-zinc-500">Mais crescimento.</span>
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-zinc-400">
-              Criamos fluxos inteligentes capazes de receber clientes, organizar informações e acelerar cada etapa do atendimento.
+            <p className="mb-5 font-mono text-[11px] tracking-[0.12em] text-[#9281f7]">
+              03 / COMO FUNCIONA
             </p>
-          </Reveal>
 
-          <div className="mt-14">
-            <AutomationFlow />
-          </div>
-        </div>
-      </section>
-
-      <section id="tecnologia" className="px-5 py-28 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <Reveal className="mb-12 text-center">
-            <p className="text-[11px] font-semibold tracking-[0.28em] text-violet-300">TECNOLOGIA</p>
-            <h2 className="mt-5 text-[2.25rem] font-semibold tracking-[-0.06em] text-white sm:text-[3rem]">
-              Seu negócio conectado.
+            <h2 className="max-w-[760px] text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.05em]">
+              Da ideia à automação.
             </h2>
           </Reveal>
 
-          <Reveal>
-            <TechnologyNetwork />
-          </Reveal>
-        </div>
-      </section>
+          <div className="mt-16 border-t border-[#292d30]">
+            {processSteps.map((step, index) => (
+              <Reveal
+                key={step.number}
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                <div className="group grid gap-5 border-b border-[#292d30] py-8 transition duration-200 hover:bg-white/[0.015] md:grid-cols-[100px_1fr_1fr] md:items-center">
+                  <span className="font-mono text-[11px] text-[#9281f7]">
+                    {step.number}
+                  </span>
 
-      <section className="px-5 py-28 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <Reveal className="mb-12">
-            <h2 className="text-[2.15rem] font-semibold tracking-[-0.06em] text-white sm:text-[3rem]">
-              Menos tarefas.
-              <span className="block text-zinc-500">Mais crescimento.</span>
-            </h2>
-          </Reveal>
+                  <h3 className="text-2xl tracking-[-0.03em] transition duration-200 group-hover:translate-x-1">
+                    {step.title}
+                  </h3>
 
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((item, index) => (
-              <Reveal key={item.value} className="block" style={{ transitionDelay: `${index * 80}ms` }}>
-                <div className="h-full rounded-[26px] border border-white/10 bg-white/[0.02] p-6 transition hover:border-violet-400/30 hover:bg-white/[0.04]">
-                  <div className="text-[11px] font-semibold tracking-[0.18em] text-violet-300">{item.value}</div>
-                  <p className="mt-5 text-lg font-medium leading-7 text-zinc-200">{item.label}</p>
+                  <p className="max-w-[440px] text-sm leading-6 text-[#a1a4a5]">
+                    {step.description}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -151,90 +531,95 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="sobre" className="px-5 py-28 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <Reveal className="rounded-[30px] border border-white/10 bg-white/[0.02] p-8">
-            <div className="mb-8 flex items-center gap-4">
-              <Image src="/logo-nexa.png" alt="Nexa Flow IA" width={64} height={64} className="h-16 w-16 object-contain" />
-              <div>
-                <p className="text-[11px] font-semibold tracking-[0.22em] text-white">NEXA FLOW</p>
-                <p className="mt-1 text-[8px] tracking-[0.3em] text-zinc-500">INTELIGÊNCIA ARTIFICIAL</p>
-              </div>
-            </div>
-
-            <h2 className="text-[2.2rem] font-semibold tracking-[-0.06em] text-white sm:text-[3rem]">
-              Tecnologia simples.
-              <span className="block text-zinc-500">Soluções inteligentes.</span>
-            </h2>
+      {/* SOBRE */}
+      <section
+        id="sobre"
+        className="border-b border-[#292d30] px-5 py-28 sm:px-6 lg:py-36"
+      >
+        <div className="mx-auto grid max-w-[1200px] gap-14 lg:grid-cols-[0.8fr_1.2fr]">
+          <Reveal>
+            <p className="font-mono text-[11px] tracking-[0.12em] text-[#9281f7]">
+              04 / NEXA FLOW
+            </p>
           </Reveal>
 
           <Reveal>
-            <div className="space-y-7 text-lg leading-8 text-zinc-400">
-              <p>
-                A Nexa Flow IA desenvolve soluções digitais para empresas que querem automatizar processos,
-                melhorar o atendimento e construir uma presença profissional na internet.
-              </p>
-              <p className="text-zinc-500">
-                Transformamos tecnologia em ferramentas práticas para o dia a dia da sua empresa.
-              </p>
+            <div>
+              <h2 className="text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.05em]">
+                Tecnologia simples.
+                <br />
+                Soluções inteligentes.
+              </h2>
+
+              <div className="mt-10 grid gap-8 text-base leading-7 text-[#a1a4a5] sm:grid-cols-2">
+                <p>
+                  A Nexa Flow desenvolve soluções digitais para empresas que
+                  querem automatizar processos e melhorar seu atendimento.
+                </p>
+
+                <p>
+                  Transformamos tecnologia em ferramentas práticas para o dia a
+                  dia do seu negócio.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section id="contato" className="px-5 pb-20 pt-8 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[34px] border border-violet-400/20 bg-[radial-gradient(circle_at_top_left,rgba(85,184,255,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.18),transparent_40%),rgba(255,255,255,0.02)] p-8 sm:p-12 lg:p-16">
-          <div className="pointer-events-none absolute -right-10 -top-12 h-[260px] w-[260px] rounded-full bg-[#667CFF]/20 blur-[120px]" />
-          <div className="pointer-events-none absolute -bottom-12 left-10 h-[300px] w-[300px] rounded-full bg-[#55B8FF]/15 blur-[120px]" />
+      {/* CONTATO */}
+      <section id="contato" className="px-5 py-28 sm:px-6 lg:py-40">
+        <div className="mx-auto max-w-[1200px]">
+          <Reveal>
+            <div className="interactive-card rounded-[16px] border border-[#292d30] p-8 sm:p-12 lg:p-16">
+              <div className="relative z-10">
+                <p className="font-mono text-[11px] tracking-[0.12em] text-[#9281f7]">
+                  05 / VAMOS CONVERSAR
+                </p>
 
-          <Reveal className="relative z-10">
-            <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
-              <Image src="/logo-nexa.png" alt="Nexa Flow IA" width={56} height={56} className="h-11 w-11 object-contain" />
+                <h2 className="mt-7 max-w-[850px] text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-[-0.05em]">
+                  Seu negócio pode
+                  <br />
+                  trabalhar melhor.
+                </h2>
+
+                <p className="mt-8 max-w-[570px] text-base leading-7 text-[#a1a4a5]">
+                  Conte o que sua empresa precisa. Vamos pensar em uma solução
+                  simples, eficiente e construída para o seu negócio.
+                </p>
+
+                <div className="mt-10 flex flex-wrap gap-3">
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="magnetic-button rounded-[6px] border border-white px-5 py-3 text-sm hover:bg-white hover:text-black"
+                  >
+                    Falar com a Nexa Flow →
+                  </a>
+
+                  <a
+                    href="https://www.instagram.com/nexa_flowia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="magnetic-button flex items-center gap-2 rounded-[6px] border border-[#292d30] px-5 py-3 text-sm text-[#a1a4a5] hover:border-[#777] hover:text-white"
+                  >
+                    <InstagramIcon />
+                    @nexa_flowia
+                  </a>
+                </div>
+              </div>
             </div>
-
-            <p className="text-[11px] font-semibold tracking-[0.26em] text-violet-300">PRONTO PARA O PRÓXIMO NÍVEL?</p>
-            <h2 className="mt-6 max-w-4xl text-[2.3rem] font-semibold tracking-[-0.06em] text-white sm:text-[3.2rem]">
-              Pronto para colocar
-              <span className="block bg-gradient-to-r from-[#55B8FF] via-[#667CFF] to-[#C43EFF] bg-clip-text text-transparent">
-                seu negócio no próximo nível?
-              </span>
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-400">
-              Conte o que sua empresa precisa e vamos desenvolver uma solução pensada para o seu negócio.
-            </p>
-
-            <a
-              href="#"
-              className="magnetic-button mt-8 inline-flex items-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-[#050507] shadow-[0_18px_50px_rgba(85,184,255,0.20)] transition hover:shadow-[0_22px_60px_rgba(102,124,255,0.22)]"
-            >
-              Falar com a Nexa Flow IA
-              <span className="ml-3">→</span>
-            </a>
           </Reveal>
         </div>
       </section>
 
-      <footer className="px-5 pb-10 pt-6 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl border-t border-white/10 pt-8">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <Image src="/logo-nexa.png" alt="Nexa Flow IA" width={36} height={36} className="h-9 w-9 object-contain" />
-              <span className="text-sm font-medium text-white">NEXA FLOW IA</span>
-            </div>
+      {/* FOOTER */}
+      <footer className="border-t border-[#292d30] px-5 py-8 sm:px-6">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-4 text-[12px] text-[#6e727a] sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Nexa Flow IA. Todos os direitos reservados.</p>
 
-            <nav className="flex flex-wrap gap-5 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
-              <a href="#inicio" className="transition hover:text-white">Início</a>
-              <a href="#solucoes" className="transition hover:text-white">Soluções</a>
-              <a href="#tecnologia" className="transition hover:text-white">Tecnologia</a>
-              <a href="#sobre" className="transition hover:text-white">Sobre</a>
-              <a href="#contato" className="transition hover:text-white">Contato</a>
-            </nav>
-          </div>
-
-          <div className="mt-8 flex flex-col gap-2 border-t border-white/5 pt-6 text-[11px] text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
-            <p>© 2026 Nexa Flow IA. Todos os direitos reservados.</p>
-            <p>Sites • Automação • Bots • Inteligência Artificial</p>
-          </div>
+          <p className="font-mono">AUTOMAÇÃO • IA • DESENVOLVIMENTO</p>
         </div>
       </footer>
     </main>

@@ -1,9 +1,11 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #030306;
-  --foreground: #f4f4f5;
-  --muted: #a1a1aa;
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #a1a4a5;
+  --border: #292d30;
+  --violet: #9281f7;
 }
 
 @theme inline {
@@ -15,17 +17,16 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--background);
+  background: #000000;
 }
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(85, 184, 255, 0.12), transparent 18%),
-    radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.15), transparent 20%),
-    var(--background);
+  margin: 0;
+  background: #000000;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 * {
@@ -33,8 +34,8 @@ body {
 }
 
 ::selection {
-  background: rgba(168, 85, 247, 0.3);
-  color: white;
+  background: rgba(146, 129, 247, 0.3);
+  color: #ffffff;
 }
 
 img {
@@ -47,37 +48,330 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* =========================
+   BOTÕES
+========================= */
+
 .magnetic-button {
   position: relative;
   transform: translate3d(0, 0, 0);
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
 .magnetic-button:hover {
   transform: translate3d(0, -2px, 0);
 }
 
+/* =========================
+   REVEAL NO SCROLL
+========================= */
+
 .reveal {
   opacity: 0;
-  filter: blur(12px);
-  transform: translate3d(0, 26px, 0) scale(0.98);
-  transition: opacity 840ms cubic-bezier(0.22, 1, 0.36, 1), transform 840ms cubic-bezier(0.22, 1, 0.36, 1), filter 840ms cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(8px);
+  transform: translate3d(0, 32px, 0);
+  transition:
+    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
 }
 
 .reveal.is-visible {
   opacity: 1;
   filter: blur(0);
-  transform: translate3d(0, 0, 0) scale(1);
+  transform: translate3d(0, 0, 0);
 }
 
-@keyframes orbit {
-  0% {
-    transform: rotate(0deg);
+/* =========================
+   HERO
+========================= */
+
+.hero-fade {
+  animation: heroFade 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-fade-delay-1 {
+  animation-delay: 100ms;
+}
+
+.hero-fade-delay-2 {
+  animation-delay: 220ms;
+}
+
+.hero-fade-delay-3 {
+  animation-delay: 340ms;
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(24px);
   }
-  100% {
-    transform: rotate(360deg);
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
   }
 }
+
+/* =========================
+   OBJETO GEOMÉTRICO
+========================= */
+
+.nexa-object {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: objectFloat 7s ease-in-out infinite;
+}
+
+.nexa-object-ring-one {
+  animation: rotateRing 24s linear infinite;
+}
+
+.nexa-object-ring-two {
+  animation: rotateRingReverse 32s linear infinite;
+}
+
+.nexa-object-core {
+  animation: coreFloat 6s ease-in-out infinite;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 300ms ease;
+}
+
+.nexa-object:hover .nexa-object-core {
+  transform: rotate(18deg) scale(1.04);
+  border-color: #6e727a;
+}
+
+@keyframes objectFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes rotateRing {
+  from {
+    transform: rotate(22deg);
+  }
+
+  to {
+    transform: rotate(382deg);
+  }
+}
+
+@keyframes rotateRingReverse {
+  from {
+    transform: rotate(45deg);
+  }
+
+  to {
+    transform: rotate(-315deg);
+  }
+}
+
+@keyframes coreFloat {
+  0%,
+  100% {
+    transform: rotate(12deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(15deg) translateY(-8px);
+  }
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.interactive-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.interactive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(146, 129, 247, 0.055),
+    transparent 80%
+  );
+  transform: translateX(-60%);
+  transition:
+    opacity 300ms ease,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.interactive-card:hover {
+  transform: translateY(-4px);
+  border-color: #464a4d;
+}
+
+.interactive-card:hover::before {
+  opacity: 1;
+  transform: translateX(60%);
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -7px;
+  height: 1px;
+  background: #ffffff;
+  transition: right 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after {
+  right: 0;
+}
+
+/* =========================
+   TERMINAL
+========================= */
+
+.terminal-cursor::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  margin-left: 6px;
+  vertical-align: -2px;
+  background: #9281f7;
+  animation: terminalBlink 1s steps(1) infinite;
+}
+
+@keyframes terminalBlink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-dot {
+  position: relative;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(58, 211, 137, 0.3);
+  border-radius: 999px;
+  animation: statusPulse 2s ease-out infinite;
+}
+
+@keyframes statusPulse {
+  0% {
+    opacity: 1;
+    transform: scale(0.7);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+/* =========================
+   LINHAS DECORATIVAS
+========================= */
+
+.animated-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-line::after {
+  content: '';
+  position: absolute;
+  left: -30%;
+  top: 0;
+  width: 20%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(146, 129, 247, 0.8),
+    transparent
+  );
+  animation: lineTravel 7s linear infinite;
+}
+
+@keyframes lineTravel {
+  from {
+    left: -30%;
+  }
+
+  to {
+    left: 110%;
+  }
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292d30;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #464a4d;
+}
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
   html {
