@@ -11,31 +11,31 @@ const WHATSAPP_URL =
 const services = [
   {
     number: '01',
-    title: 'Automação',
+    title: 'Automação de Processos',
     description:
-      'Automatizamos processos repetitivos para sua empresa ganhar velocidade, organização e tempo.',
-    tag: 'PROCESSOS',
+      'Automatizamos tarefas e processos repetitivos, conectando ferramentas para tornar a operação da sua empresa mais rápida e eficiente.',
+    tag: 'AUTOMAÇÃO',
   },
   {
     number: '02',
-    title: 'Inteligência Artificial',
+    title: 'WhatsApp & Bots',
     description:
-      'Integramos inteligência artificial ao atendimento e às operações do seu negócio.',
-    tag: 'IA',
+      'Criamos bots de atendimento para WhatsApp, automatizando respostas, captação de contatos e etapas do atendimento ao cliente.',
+    tag: 'BOTS',
   },
   {
     number: '03',
-    title: 'Sites & Landing Pages',
+    title: 'Sites & Domínios',
     description:
-      'Criamos experiências digitais rápidas, profissionais e pensadas para transformar visitas em oportunidades.',
+      'Desenvolvemos sites e landing pages profissionais e cuidamos da configuração do domínio para fortalecer a presença digital da sua empresa.',
     tag: 'WEB',
   },
   {
     number: '04',
-    title: 'WhatsApp & Bots',
+    title: 'Ferramentas Personalizadas',
     description:
-      'Atendimento automatizado para responder clientes, organizar contatos e gerar novas oportunidades.',
-    tag: 'BOTS',
+      'Criamos ferramentas digitais sob medida para facilitar processos internos e atender necessidades específicas do seu negócio.',
+    tag: 'SISTEMAS',
   },
 ];
 
@@ -43,7 +43,7 @@ const benefits = [
   { value: '24/7', label: 'Atendimento automatizado' },
   { value: '+Agilidade', label: 'Processos mais rápidos' },
   { value: '+Tempo', label: 'Menos tarefas repetitivas' },
-  { value: 'Escalável', label: 'Tecnologia que cresce com você' },
+  { value: 'Sob medida', label: 'Soluções para cada negócio' },
 ];
 
 const processSteps = [
@@ -51,25 +51,25 @@ const processSteps = [
     number: '01',
     title: 'Entendemos',
     description:
-      'Conhecemos sua empresa, sua rotina e os processos que podem ser melhorados.',
+      'Conhecemos sua empresa, sua rotina e identificamos processos que podem ser automatizados ou melhorados.',
   },
   {
     number: '02',
     title: 'Planejamos',
     description:
-      'Desenhamos uma solução objetiva e adequada às necessidades do negócio.',
+      'Definimos a melhor solução, seja uma automação, bot, integração, site ou ferramenta personalizada.',
   },
   {
     number: '03',
     title: 'Desenvolvemos',
     description:
-      'Transformamos o planejamento em uma solução digital funcional.',
+      'Construímos e configuramos a solução de acordo com as necessidades da sua empresa.',
   },
   {
     number: '04',
     title: 'Evoluímos',
     description:
-      'Acompanhamos o projeto e buscamos novas oportunidades de automação.',
+      'Acompanhamos a solução e identificamos novas oportunidades para otimizar e automatizar sua operação.',
   },
 ];
 
@@ -286,9 +286,10 @@ export default function Home() {
                 o seu negócio.
               </h1>
 
-              <p className="hero-fade hero-fade-delay-2 mt-8 max-w-[560px] text-[16px] leading-7 text-[#a1a4a5] sm:text-[18px]">
-                Criamos soluções digitais para empresas que querem automatizar
-                processos, melhorar o atendimento e crescer usando tecnologia.
+              <p className="hero-fade hero-fade-delay-2 mt-8 max-w-[590px] text-[16px] leading-7 text-[#a1a4a5] sm:text-[18px]">
+                Automatizamos processos, conectamos ferramentas e criamos
+                soluções digitais para tornar sua empresa mais rápida,
+                organizada e eficiente.
               </p>
 
               <div className="hero-fade hero-fade-delay-3 mt-10 flex flex-wrap gap-3">
@@ -378,10 +379,10 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-end">
-                  <p className="max-w-[480px] text-base leading-7 text-[#a1a4a5]">
-                    Soluções pensadas para eliminar tarefas repetitivas,
-                    melhorar a experiência dos seus clientes e criar uma
-                    operação mais eficiente.
+                  <p className="max-w-[490px] text-base leading-7 text-[#a1a4a5]">
+                    Da automação de tarefas ao desenvolvimento de sites, bots e
+                    ferramentas: criamos soluções para simplificar processos e
+                    melhorar a operação da sua empresa.
                   </p>
                 </div>
               </div>
@@ -414,9 +415,14 @@ export default function Home() {
                       </p>
 
                       <div className="mt-8 border-t border-[#292d30] pt-5">
-                        <span className="inline-block text-sm transition duration-200 group-hover:translate-x-1">
+                        <a
+                          href={WHATSAPP_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block text-sm transition duration-200 group-hover:translate-x-1"
+                        >
                           Saiba mais →
-                        </span>
+                        </a>
                       </div>
                     </div>
                   </article>
@@ -444,10 +450,10 @@ export default function Home() {
                   Mais crescimento.
                 </h2>
 
-                <p className="mt-7 max-w-[500px] text-base leading-7 text-[#a1a4a5]">
-                  Conectamos ferramentas, atendimento e inteligência artificial
-                  para construir processos que funcionam mesmo quando você não
-                  está olhando.
+                <p className="mt-7 max-w-[510px] text-base leading-7 text-[#a1a4a5]">
+                  Integramos ferramentas, automatizamos processos e
+                  desenvolvemos soluções para reduzir tarefas manuais e tornar
+                  sua operação mais eficiente.
                 </p>
               </div>
             </Reveal>
@@ -480,7 +486,7 @@ export default function Home() {
                   </p>
 
                   <p>
-                    <span className="text-[#a1a4a5]">inteligência:</span>{' '}
+                    <span className="text-[#a1a4a5]">processo:</span>{' '}
                     <span>atendimento_automatico</span>
                   </p>
 
@@ -513,7 +519,7 @@ export default function Home() {
               </p>
 
               <h2 className="max-w-[760px] text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.98] tracking-[-0.05em]">
-                Da ideia à automação.
+                Da necessidade à solução.
               </h2>
             </Reveal>
 
@@ -564,13 +570,15 @@ export default function Home() {
 
                 <div className="mt-10 grid gap-8 text-base leading-7 text-[#a1a4a5] sm:grid-cols-2">
                   <p>
-                    A Nexa Flow desenvolve soluções digitais para empresas que
-                    querem automatizar processos e melhorar seu atendimento.
+                    A Nexa Flow ajuda empresas a automatizar processos,
+                    integrar ferramentas e melhorar o atendimento por meio de
+                    soluções digitais.
                   </p>
 
                   <p>
-                    Transformamos tecnologia em ferramentas práticas para o dia
-                    a dia do seu negócio.
+                    Criamos bots para WhatsApp, sites, domínios e ferramentas
+                    personalizadas de acordo com as necessidades de cada
+                    negócio.
                   </p>
                 </div>
               </div>
@@ -594,9 +602,10 @@ export default function Home() {
                     trabalhar melhor.
                   </h2>
 
-                  <p className="mt-8 max-w-[570px] text-base leading-7 text-[#a1a4a5]">
-                    Conte o que sua empresa precisa. Vamos pensar em uma solução
-                    simples, eficiente e construída para o seu negócio.
+                  <p className="mt-8 max-w-[600px] text-base leading-7 text-[#a1a4a5]">
+                    Conte o que você precisa automatizar, desenvolver ou
+                    melhorar. Vamos encontrar uma solução adequada para a sua
+                    empresa.
                   </p>
 
                   <div className="mt-10 flex flex-wrap gap-3">
@@ -630,7 +639,9 @@ export default function Home() {
           <div className="mx-auto flex max-w-[1200px] flex-col gap-4 text-[12px] text-[#6e727a] sm:flex-row sm:items-center sm:justify-between">
             <p>© 2026 Nexa Flow IA. Todos os direitos reservados.</p>
 
-            <p className="font-mono">AUTOMAÇÃO • IA • DESENVOLVIMENTO</p>
+            <p className="font-mono">
+              AUTOMAÇÃO • BOTS • WEB • FERRAMENTAS
+            </p>
           </div>
         </footer>
       </main>
